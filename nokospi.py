@@ -11,7 +11,6 @@ from sklearn.metrics import mean_squared_error
 samsung=pd.read_csv('삼성전자 내역.csv', engine='python', header=0, index_col=0, sep=',')
 sk=pd.read_csv('SK하이닉스 내역.csv',  engine='python', header=0, index_col=0, sep=',')
 db=pd.read_csv('DB하이텍 내역.csv',  engine='python', header=0, index_col=0, sep=',')
-kospi=pd.read_csv('코스피 내역.csv',  engine='python', header=0, index_col=0, sep=',')
 
 
 
@@ -20,14 +19,14 @@ kospi=pd.read_csv('코스피 내역.csv',  engine='python', header=0, index_col=
 samsung=samsung.sort_values(['날짜'], ascending=['True'])
 sk=sk.sort_values(['날짜'], ascending=['True'])
 db=db.sort_values(['날짜'], ascending=['True'])
-kospi=kospi.sort_values(['날짜'], ascending=['True'])
+
 
 
 #필요한 컬럼
 samsung=samsung[['종가', '오픈', '고가', '저가']]
 sk=sk[['종가', '오픈', '고가', '저가']]
 db=db[['종가', '오픈', '고가', '저가']]
-kospi=kospi[['종가', '오픈', '고가', '저가']]
+
 
 
 #콤마 제거 후 문자를 정수로 변환
@@ -43,9 +42,6 @@ for i in range(len(db.index)) :
     for j in range(len(db.iloc[i])) :
         db.iloc[i, j]=int(db.iloc[i, j].replace(',', ''))
         
-for i in range(len(kospi.index)) :
-    for j in range(len(kospi.iloc[i])) :
-        kospi.iloc[i, j]=int(float(kospi.iloc[i, j].replace(',', '')))
 
 
 
